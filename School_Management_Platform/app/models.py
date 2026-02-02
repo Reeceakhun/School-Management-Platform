@@ -8,10 +8,10 @@ from django.db import models
 
 class Student(models.Model):
 
-    last_name = models.CharField(max_length=30, help_text="Enter your last name"),
-    first_name = models.CharField(max_length=30),
-    middle_name = models.CharField(max_length=30, null=True),
-    email_address = models.EmailField(),
+    last_name = models.CharField(max_length=30, help_text="Enter your last name")
+    first_name = models.CharField(max_length=30)
+    middle_name = models.CharField(max_length=30, null=True)
+    email_address = models.EmailField()
     enrollment_date = models.DateTimeField("Enrollment Date")
 
     def __str__(self):
@@ -20,8 +20,8 @@ class Student(models.Model):
 
 class Course(models.Model):
     """ Create the Couse model. Add data to the database table"""
-    course_id = models.AutoField(primary_key=True),
-    title = models.CharField(max_length=50),
+    course_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=50)
     credits = models.IntegerField()
 
     def __str__(self):
@@ -31,10 +31,10 @@ class Course(models.Model):
 
 class Enrollment(models.Model):
 
-    enrollment_id = models.AutoField(primary_key=True),
+    enrollment_id = models.AutoField(primary_key=True)
     course = models.ForeignKey(Course,
                                on_delete=models.CASCADE,
-                               related_name='Enrollment'),
+                               related_name='Enrollment')
 
     student = models.ForeignKey(
         Student,
